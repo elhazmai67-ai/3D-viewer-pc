@@ -1,0 +1,49 @@
+{
+  "name": "viewer3d",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "electron": "npm run build && electron .",
+    "dist:win": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/filesystem": "^6.0.0",
+    "@capacitor/share": "^6.0.0",
+    "electron": "^31.7.0",
+    "electron-builder": "^24.13.3",
+    "three": "^0.160.0",
+    "vite": "^5.4.0"
+  },
+  "main": "electron/main.cjs",
+  "description": "3D Viewer for STL and 3MF",
+  "author": "3D Viewer",
+  "build": {
+    "appId": "com.viewer3d.app",
+    "productName": "3D Viewer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "artifactName": "3D-Viewer-${version}-${type}.${ext}"
+  }
+}
